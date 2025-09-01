@@ -7,6 +7,7 @@ from src.exception import CustomException
 from src.logger import logging
 from dataclasses import dataclass
 from data_transformation import DataTransformation, DataTransformationConfig
+from model_trainer import ModelTrainer, ModelTrainerConfig
 
 @dataclass
 class DataIngestionConfig:
@@ -52,4 +53,6 @@ if __name__== "__main__":
     train_path, test_path= obj.initiate_data_ingestion()
     data_transformation = DataTransformation()
     train_arr, test_arr, preprocessor_path = data_transformation.initiate_data_transformation(train_path, test_path)
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
     
